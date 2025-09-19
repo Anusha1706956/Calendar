@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Smart Task Manager — Notifications</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loginModal" class="modal active">
+    <div class="modal-card">
+      <h2>Welcome — Login</h2>
+      <input id="loginName" placeholder="Enter your name" />
+      <div class="row">
+        <button id="btnLogin" class="btn primary">Login </button>
+      </div>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <h1 class="brand">Remainder Planner</h1>
+    <nav>
+      <button class="nav-btn" data-page="dashboard">🏠 Dashboard</button>
+      <button class="nav-btn" data-page="calendar">📅 Calendar</button>
+      <button id="toggleNotifBar" class="nav-btn">🔔 Notifications</button>
+      <button id="logoutBtn" class="nav-btn danger">🚪 Logout</button>
+    </nav>
+    <div class="sidebar-foot muted">Signed in as <span id="userLabel">—</span></div>
+  </aside>
+
+  <main class="main">
+    <section id="dashboard" class="page active">
+      <div class="container">
+        <h2 id="welcomeTitle">Welcome</h2>
+        <div class="stats">
+          <div class="card">
+            <div class="card-title">Upcoming (30d)</div>
+            <div id="statUpcoming" class="card-number">0</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Today</div>
+            <div id="statToday" class="card-number">0</div>
+          </div>
+          <div class="card">
+            <div class="card-title">Notifications</div>
+            <div id="statNotifs" class="card-number">0</div>
+          </div>
+        </div>
+        <p class="muted">Use the Calendar to add events. Notifications appear in the Notification Bar (right).</p>
+      </div>
+    </section>
+
+    <section id="calendar" class="page">
+      <div class="container">
+        <div class="cal-header">
+          <button id="prevMonth" class="btn ghost">‹</button>
+          <div>
+            <div id="calMonthYear" class="cal-month-year">Month Year</div>
+            <div class="muted" id="calToday">Today</div>
+          </div>
+          <button id="nextMonth" class="btn ghost">›</button>
+        </div>
+
+        <div id="calendarGrid" class="calendar-grid"></div>
+
+        <div class="controls">
+          <button id="openAdd" class="btn primary">+ Add Event</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside id="notificationBar" class="notification-bar">
+    <div class="nb-head">
+      <h3>🔔 Notifications</h3>
+      <div class="nb-actions">
+        <button id="clearAllNotifs" class="btn ghost small">Clear</button>
+        <button id="closeNotifBar" class="btn ghost small">Close</button>
+      </div>
+    </div>
+    <div id="notifList" class="notif-list"></div>
+  </aside>
+
+  <div id="eventModal" class="modal">
+    <div class="modal-card">
+      <h3 id="eventModalTitle">Add Event</h3>
+
+      <label>Title</label>
+      <input id="evTitle" placeholder="Event title (e.g. John's Birthday)" />
+
+      <label>Person (optional)</label>
+      <input id="evPerson" placeholder="Person name" />
+
+      <label>Date</label>
+      <input id="evDate" type="date" />
+
+      <label>Time</label>
+      <input id="evTime" type="time" />
+
+      <label>Category</label>
+      <select id="evCategory">
+        <option value="birthday">🎂 Birthday</option>
+        <option value="marriage">💍 Marriage</option>
+        <option value="work">💍 Anniversary</option>
+        <option value="work">📂 Work</option>
+        <option value="work">📂 Project</option>
+        <option value="work">📂 Assignment</option>
+        <option value="reminder">🔔 Reminder</option>
+      </select>
+
+      <div class="row">
+        <button id="saveEvent" class="btn primary">Save</button>
+        <button id="cancelEvent" class="btn ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="eventDetailModal" class="modal">
+    <div class="modal-card">
+      <h3 id="detailTitle">Event</h3>
+      <div id="detailWhen" class="muted"></div>
+      <div id="detailPerson"></div>
+      <div id="detailCategory"></div>
+      <div class="row">
+        <button id="markDoneBtn" class="btn primary">Mark Done</button>
+        <button id="closeDetailBtn" class="btn ghost">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="popup" class="popup">
+    <div id="popupCard" class="popup-card"></div>
+  </div>
+
+  <audio id="audioNotify" preload="auto">
+    <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" type="audio/ogg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

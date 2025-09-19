@@ -1,0 +1,87 @@
+:root{
+  --bg1:#0f1724;
+  --accent:#6c63ff;
+  --accent-2:#60c1c1;
+  --muted:#64748b;
+}
+
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  background:linear-gradient(135deg,#46297a,#820aad);
+  min-height:100vh; display:flex; gap:12px;
+}
+
+
+.sidebar{
+  width:220px; background:linear-gradient(180deg,#d7d1d1,#fff8f2);
+  padding:18px; border-radius:12px; margin:18px 0 18px 18px; box-shadow:0 12px 40px rgba(15,23,42,0.08);
+}
+.brand{font-size:20px;margin:0 0 10px}
+.sidebar nav{display:flex;flex-direction:column;gap:10px}
+.nav-btn{background:transparent;border:1px solid #f0f0f0;padding:10px;border-radius:10px;cursor:pointer;font-weight:600}
+.nav-btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(12,18,30,0.06)}
+.sidebar-foot{margin-top:12px;font-size:13px;color:var(--muted)}
+
+
+.main{flex:1;margin:18px 18px 18px 0;display:flex;flex-direction:column;gap:12px}
+.container{background:rgba(255,255,255,0.9);padding:18px;border-radius:12px;box-shadow:0 12px 40px rgba(15,23,42,0.06)}
+.muted{color:var(--muted)}
+
+
+.stats{display:flex;gap:12px;margin:12px 0}
+.card{flex:1;padding:12px;border-radius:10px;background:linear-gradient(180deg,#ffffff,#fbfdff);text-align:center;box-shadow:0 8px 24px rgba(12,18,30,0.04)}
+.card-title{font-size:13px;color:var(--muted)}
+.card-number{font-size:24px;font-weight:700;margin-top:6px}
+
+
+.cal-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cal-month-year{font-weight:700;font-size:18px}
+.btn{padding:8px 12px;border-radius:10px;border:none;cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#6459a8);color:white}
+.btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
+.btn.small{padding:6px 8px}
+
+
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:14px}
+.day-card{background:linear-gradient(180deg,#fff,#fbfdff);padding:10px;border-radius:10px;min-height:110px;position:relative;box-shadow:0 8px 24px rgba(12,18,30,0.03);cursor:pointer;transition:transform .18s}
+.day-card:hover{transform:translateY(-6px)}
+.day-num{position:absolute;right:8px;top:8px;font-weight:700;color:#0f1724}
+.event-item{display:flex;flex-direction:column;align-items:center;margin-top:10px}
+.event-emoji{font-size:28px}
+.event-title{font-size:12px;color:var(--muted);text-align:center}
+
+
+.notification-bar{
+  width:320px;background:linear-gradient(180deg,#ffffff,#fff9f0);padding:12px;border-radius:12px;margin:18px;border-left:6px solid var(--accent);
+  box-shadow:0 20px 60px rgba(12,18,30,0.08);height:calc(100vh - 36px);overflow:auto;
+}
+.nb-head{display:flex;align-items:center;justify-content:space-between}
+.nb-actions{display:flex;gap:8px}
+.notif-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.notif-item{background:linear-gradient(180deg,#fffef8,#fff7ed);padding:10px;border-radius:10px;display:flex;gap:10px;align-items:center;justify-content:space-between;box-shadow:0 6px 20px rgba(12,18,30,0.03)}
+.notif-left{display:flex;gap:10px;align-items:center}
+.notif-emoji{font-size:20px}
+.notif-msg{font-size:14px}
+.small{font-size:12px;padding:6px 8px}
+
+
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,8,21,0.36);z-index:60}
+.modal.active{display:flex}
+.modal-card{background:white;padding:16px;border-radius:12px;min-width:320px;box-shadow:0 40px 90px rgba(12,18,30,0.2);animation:modalIn .36s ease}
+.modal-card input, .modal-card select{width:100%;padding:8px;margin:8px 0;border-radius:8px;border:1px solid #eef2ff}
+.row{display:flex;gap:8px;justify-content:center;margin-top:8px}
+@keyframes modalIn{from{transform:translateY(-20px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+
+
+.popup{position:fixed;right:20px;bottom:20px;z-index:80;min-width:220px}
+.popup-card{background:linear-gradient(90deg,#fff,#fbfdff);padding:12px;border-radius:10px;box-shadow:0 8px 32px rgba(12,18,30,0.12);display:none;align-items:center;gap:8px}
+
+
+@media (max-width:980px){
+  .sidebar{display:none}
+  .notification-bar{display:none}
+  body{flex-direction:column}
+}
